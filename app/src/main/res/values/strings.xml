@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HwaHae_Clone</string>
+
+    <string name="home_now_category_txt">화해가 준비한 다양한 카테고리를 통해 나에게 맞는 제품을 찾아보세요🔍</string>
+    <string name="home_now_new_product_txt">NEW⚡인기신제품</string>
+    <string name="home_now_hot_ranking_txt">HOT🔥랭킹</string>
+    <string name="home_now_hwahae_shopping_txt">화해쇼핑🛍</string>
+    <string name="home_now_hwahae_md_recommend_txt">화해MD가 제안하는 이주의 특가!</string>
+
+    <string name="home_now_shopping_price_won">%s</string>
+    <string name="home_now_shopping_discount_percent">%d</string>
+    <string name="home_now_shopping_vertical_name">%s %s</string>
+</resources>
