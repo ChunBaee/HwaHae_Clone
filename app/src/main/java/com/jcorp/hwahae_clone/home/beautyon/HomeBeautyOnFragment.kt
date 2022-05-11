@@ -22,6 +22,7 @@ class HomeBeautyOnFragment : Fragment(), onInfiniteCallback {
     private lateinit var binding : FragmentHomeBeautyOnBinding
     private val viewModel by activityViewModels<HomeBeautyOnViewModel>()
 
+    private var originalLocation : Int = 0
     private var isRunning = true
 
     private val bannerAdapter by lazy {
@@ -54,6 +55,23 @@ class HomeBeautyOnFragment : Fragment(), onInfiniteCallback {
         viewModel.homeBeautyOnContentItem.observe(requireActivity(), Observer {
             contentAdapter.setContentList(it)
         })
+        viewModel.curScroll.observe(requireActivity(), Observer {
+            var location = IntArray(2)
+            binding.homeBeautyOnBtnEditorSelect.getLocationOnScreen(location)
+            Log.d("----", "aaa: Location1 : ${location[1]}")
+            Log.d("----", "aaa: CUR : ${viewModel.mainTabCurHeight.value} // TAB : ${viewModel.mainTabHeight} //i2 $it //i4 ${viewModel.pastScroll.value}")
+
+            if(location[1] < (viewModel.mainTabCurHeight.value!!.plus(viewModel.mainTabHeight)) && location[1] != 0) {
+                binding.homeBeautyOnBtnEditorSelect.translationY = binding.homeBeautyOnBtnEditorSelect.translationY + (it - viewModel.pastScroll.value!!).toFloat()
+                Log.d("----", "aaa: TRANS : ${binding.homeBeautyOnBtnEditorSelect.translationY}")
+            } /*else if( location[1] > viewModel.mainTabCurHeight.value!!.plus(viewModel.mainTabHeight)){
+                binding.homeBeautyOnBtnEditorSelect.translationY = 0F
+            }*/
+            /*if(location[1] <= (viewModel.mainTabCurHeight.value!!.plus(viewModel.mainTabHeight))) {
+
+                binding.homeBeautyOnBtnEditorSelect.translationY = ((viewModel.mainTabCurHeight.value!!.plus(viewModel.mainTabHeight)) - location[1]).toFloat()
+            }*/
+        })
     }
 
     private fun setBanner() {
@@ -76,7 +94,12 @@ class HomeBeautyOnFragment : Fragment(), onInfiniteCallback {
     }
 
     private fun setStickyHeader() {
+        binding.homeBeautyOnBtnEditorSelect.translationZ = 1.0F
 
+        binding.scroll.getChildAt(0).setOnTouchListener { view, motionEvent ->
+            view.parent.requestDisallowInterceptTouchEvent(true)
+            return@setOnTouchListener false
+        }
     }
 
     private fun adAutoScroll() {
@@ -89,5 +112,15 @@ class HomeBeautyOnFragment : Fragment(), onInfiniteCallback {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        var location = IntArray(2)
+        binding.homeBeautyOnBtnEditorSelect.getLocationOnScreen(location)
+        originalLocation = location[1]
+        Log.d("----", "aaa: ${location[1]}")
+
+        Log.d("----", "aaa: HEI : ${binding.homeBeautyOnBtnEditorSelect.bottom - binding.homeBeautyOnBtnEditorSelect.top}")
+        super.onResume()
     }
 }

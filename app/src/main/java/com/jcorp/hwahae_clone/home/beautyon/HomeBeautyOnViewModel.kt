@@ -10,6 +10,11 @@ import com.jcorp.hwahae_clone.home.beautyon.data.HomeBeautyOnContentItem
 class HomeBeautyOnViewModel : ViewModel() {
     private val repo = BeautyOnRepository()
 
+    var curScroll = MutableLiveData<Int>()
+    var pastScroll = MutableLiveData<Int>()
+    var mainTabCurHeight = MutableLiveData<Int>()
+    var mainTabHeight : Int = 0
+
     private val _homeBeautyOnBannerItem = MutableLiveData<MutableList<HomeBeautyOnBannerItem>>()
     val homeBeautyOnBannerItem : LiveData<MutableList<HomeBeautyOnBannerItem>> = _homeBeautyOnBannerItem
 

@@ -16,7 +16,7 @@
         <entry key="app/src/main/res/drawable/form_indicator_selected_dot.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_main_bottom_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_tab_indicator_dots.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.254320987654321" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15875370919881307" />
         <entry key="app/src/main/res/layout/fragment_home_beauty_on.xml" value="0.29085872576177285" />
         <entry key="app/src/main/res/layout/fragment_home_now.xml" value="0.165" />

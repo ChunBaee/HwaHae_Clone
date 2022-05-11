@@ -11,6 +11,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             app:elevation="0dp">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -23,7 +24,7 @@
                     android:layout_height="50dp"
                     android:background="@color/white"
                     app:contentInsetStart="0dp"
-                    app:layout_collapseMode="parallax" >
+                    app:layout_collapseMode="parallax">
 
                     <FrameLayout
                         android:id="@+id/main_toolbar_container"
@@ -34,17 +35,33 @@
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/home_tab_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabGravity="start"
+                app:tabIndicatorColor="@color/black"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="1.5dp"
+                app:tabPaddingTop="10dp"
+                app:tabTextColor="@color/black" />
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <FrameLayout
-                android:id="@+id/container"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/home_pager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="?actionBarSize" />
 
         </androidx.core.widget.NestedScrollView>
 
@@ -54,13 +71,13 @@
             android:layout_height="37dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/icon_bottom_write"
-            app:tint="@null"
-            app:elevation="0dp"
             app:backgroundTint="@color/black"
-            app:maxImageSize="20dp"
+            app:elevation="0dp"
             app:fabCustomSize="37dp"
             app:layout_anchor="@id/main_bottomView"
-            app:layout_anchorGravity="right|center"/>
+            app:layout_anchorGravity="right|center"
+            app:maxImageSize="20dp"
+            app:tint="@null" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_bottomView"
